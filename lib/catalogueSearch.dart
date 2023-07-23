@@ -27,7 +27,7 @@ class _CatalogueSearchState extends State<CatalogueSearch>{
             Navigator.pop(context);
           },
         ),
-        title: Text('Search books'),
+        title: const Text('Search books'),
         
       ),
       body: Center(

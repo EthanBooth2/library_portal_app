@@ -35,7 +35,19 @@ class BookSelection extends StatelessWidget {
                   child: const Icon(Icons.download),
                 ),
               ),
-            )
+            ),
+            Align(
+              alignment: Alignment.bottomRight,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: IconButton(
+                  icon: const Icon(Icons.star_border),
+                  onPressed: () {
+                    print("favourite");
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),
