@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'book.dart';
+import 'catalogueSearch.dart';
+import 'BookSelection.dart';
 
 class MyListItem extends StatelessWidget {
   final String itemText;
@@ -23,7 +25,7 @@ class MyListItem extends StatelessWidget {
 }
 
 class BookCatalogue extends StatefulWidget {
-  BookCatalogue({super.key});
+  const BookCatalogue({super.key});
 
   @override
   State<BookCatalogue> createState() => _BookCatalogueState();
@@ -37,7 +39,7 @@ class _BookCatalogueState extends State<BookCatalogue> {
     addElements();
   }
 
-  Book testBook = Book("helloWorld", "Student", "non-fiction", "this is an example of the description of a book");
+  Book testBook = Book("HelloWorld", "Student", "non-fiction", "this is an example of the description of a book");
   List<Book> bookList = [];
   void addElements() {
     bookList.add(testBook);
@@ -56,6 +58,19 @@ class _BookCatalogueState extends State<BookCatalogue> {
           },
         ),
         title: Text('BookCatalogue'),
+
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CatalogueSearch(bookList: bookList,)
+                )
+              );
+            }, 
+            icon: Icon(Icons.search))
+        ],
       ),
       body: ListView.builder(
         itemCount: bookList.length,
@@ -77,44 +92,3 @@ class _BookCatalogueState extends State<BookCatalogue> {
   }
 }
 
-class BookSelection extends StatelessWidget {
-  const BookSelection({super.key, required this.selectedBook});
-  final Book selectedBook;
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: (){
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(selectedBook.title),
-      ),
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            Text("Author: ${selectedBook.author}", style: const TextStyle(fontSize: 18.0),),
-            Text("Genre: ${selectedBook.genre}", style: const TextStyle(fontSize: 18.0),),
-            Text("Description: ${selectedBook.description}", style: const TextStyle(fontSize: 18.0),),
-            Tooltip(
-              message: "Download",
-              child: ButtonTheme(
-                minWidth: 200,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    print("download");
-                    },
-                  child: const Icon(Icons.download),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}

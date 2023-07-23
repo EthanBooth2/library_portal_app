@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'bookCatalogue.dart';
-import 'book.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,28 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _authorController = TextEditingController();
-  final _titleController = TextEditingController();
-
-  @override
-  void dispose() {
-    _authorController.dispose();
-    _titleController.dispose();
-    super.dispose();
-  }
-
-
-  int _counter = 0;
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   void loadList() {
     Navigator.push(
@@ -89,75 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 50, // Set the desired height
                 child: ElevatedButton(
                   onPressed: loadList,
-                  child: Text('Book Catalogue'),
+                  child: const Text('Book Catalogue'),
                 ),
               ),
             ),
-            Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Flexible(
-                  flex: 1,
-                  child: TextField(
-                    controller: _authorController,
-                    maxLength: 100,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter author name'
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: Tooltip(
-                    message: "Search",
-                    child: ButtonTheme(
-                      minWidth: 200,
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          print(_authorController.text);
-                        },
-                        child: Icon(Icons.search),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Flexible(
-                  flex: 1,
-                  child: TextField(
-                    controller: _titleController,
-                    maxLength: 100,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter book title'
-                    ),
-                  ),
-                ),
-                Flexible(
-                  flex: 2,
-                  child: Tooltip(
-                    message: "Search",
-                    child: ButtonTheme(
-                      minWidth: 200,
-                      height: 50,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          print(_titleController.text);
-                        },
-                        child: Icon(Icons.search),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            )
+            
           ],
         ),
       ),
