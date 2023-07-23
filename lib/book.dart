@@ -1,25 +1,10 @@
 
 
 class Book{
-  String title = "";
-  String author = "";
-  String genre = "";
+  final String title;
+  final String author;
+  final String genre;
+  final String description;
 
-  Book(String title, String author, String genre){
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-  }
-
-  String getTitle() {
-    return title;
-  }
-
-  String getAuthor() {
-    return author;
-  }
-
-  String getGenre() {
-    return genre;
-  }
+  const Book(this.title, this.author, this.genre, this.description);
 }
