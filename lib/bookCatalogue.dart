@@ -40,9 +40,13 @@ class _BookCatalogueState extends State<BookCatalogue> {
   }
 
   Book testBook = Book("HelloWorld", "Student", "non-fiction", "this is an example of the description of a book");
+  Book testBookTwo = Book("TestBook", "Teacher", "fiction", "This is another example of the description of a book");
+  Book testBookThree = Book("Third Book", "Other", "fiction", "This is the final example of the description of a book");
   List<Book> bookList = [];
   void addElements() {
     bookList.add(testBook);
+    bookList.add(testBookTwo);
+    bookList.add(testBookThree);
   }
 
 
