@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'bookCatalogue.dart';
+import 'FavouriteBooks.dart';
+import 'book.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,10 +35,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  List<Book> favouriteList = [];
+
   void loadList() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => BookCatalogue()),
+      MaterialPageRoute(builder: (context) => BookCatalogue(favouriteList: favouriteList,)),
     );
   }
 
@@ -70,7 +74,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            
+            Tooltip(
+              message: "Favourites",
+              child: ButtonTheme(
+                minWidth: 200,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => FavouriteBooks(favouriteList: favouriteList,)),
+                    );
+                  },
+                  child: const Text('Favourites'),
+                ),
+              ),
+            ),
           ],
         ),
       ),

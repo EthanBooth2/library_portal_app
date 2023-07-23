@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'book.dart';
 
 class BookSelection extends StatelessWidget {
-  const BookSelection({super.key, required this.selectedBook});
+  BookSelection({super.key, required this.selectedBook, required this.favouriteList});
   final Book selectedBook;
+  List<Book> favouriteList;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +44,7 @@ class BookSelection extends StatelessWidget {
                 child: IconButton(
                   icon: const Icon(Icons.star_border),
                   onPressed: () {
-                    print("favourite");
+                    favouriteList.add(selectedBook);
                   },
                 ),
               ),

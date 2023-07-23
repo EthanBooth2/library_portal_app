@@ -3,8 +3,9 @@ import 'book.dart';
 import 'BookSelection.dart';
 
 class CatalogueSearch extends StatefulWidget{
-  CatalogueSearch({super.key, required this.bookList});
+  CatalogueSearch({super.key, required this.bookList, required this.favouriteList});
 
+  List<Book> favouriteList;
   List<Book> bookList;
 
   @override
@@ -63,7 +64,7 @@ class _CatalogueSearchState extends State<CatalogueSearch>{
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => BookSelection(selectedBook: widget.bookList[i],)
+                                  builder: (context) => BookSelection(selectedBook: widget.bookList[i], favouriteList: widget.favouriteList,)
                                 ),
                               );
                             }else{
@@ -109,7 +110,7 @@ class _CatalogueSearchState extends State<CatalogueSearch>{
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => BookSelection(selectedBook: widget.bookList[i],)
+                                  builder: (context) => BookSelection(selectedBook: widget.bookList[i], favouriteList: widget.favouriteList,)
                                 ),
                               );
                             }else{

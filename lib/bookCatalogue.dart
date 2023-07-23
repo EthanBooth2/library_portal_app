@@ -25,7 +25,9 @@ class MyListItem extends StatelessWidget {
 }
 
 class BookCatalogue extends StatefulWidget {
-  const BookCatalogue({super.key});
+  BookCatalogue({super.key, required this.favouriteList});
+
+  List<Book> favouriteList;
 
   @override
   State<BookCatalogue> createState() => _BookCatalogueState();
@@ -69,7 +71,7 @@ class _BookCatalogueState extends State<BookCatalogue> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => CatalogueSearch(bookList: bookList,)
+                  builder: (context) => CatalogueSearch(bookList: bookList, favouriteList: widget.favouriteList,)
                 )
               );
             }, 
@@ -85,7 +87,7 @@ class _BookCatalogueState extends State<BookCatalogue> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => BookSelection(selectedBook: bookList[index],)
+                    builder: (context) => BookSelection(selectedBook: bookList[index], favouriteList: widget.favouriteList,)
                     ),
                 );
               }
